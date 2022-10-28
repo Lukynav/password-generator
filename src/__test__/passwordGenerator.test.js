@@ -29,7 +29,7 @@ describe('password generator', () => {
   it('the result should have the same length of the first param', () => {
     expect(passwordGenerator(2)).toHaveLength(2)
     expect(passwordGenerator(3)).toHaveLength(3)
-    expect(passwordGenerator(11)).toHaveLength(11)
+    expect(passwordGenerator(11, { lowercase: true, uppercase: true })).toHaveLength(11)
   })
 
   // settings object
