@@ -7,12 +7,17 @@ export const passwordGenerator = (length, setting) => {
   if (!length || length <= 0) { throw new Error('The length param is required') }
   let password = null
 
+  console.log(setting)
+
   if (!setting) { password = useDefaultSetting(length) }
   if (setting) { password = useCustomSetting(length, setting) }
 
+  if (password.length < length) {
+    const dif = length - password.length
+    password += addMissedChr(dif, setting)
+  }
   password = sortPassword(password)
 
-  console.log(password)
   return password
 }
 
@@ -24,7 +29,7 @@ const useDefaultSetting = (length) => {
 // crate an password with custom characters
 const useCustomSetting = (length, setting) => {
   let pass = ''
-  const max = length / getLengthOfObject(setting)
+  const max = Math.floor(length / getLengthOfObject(setting))
 
   if (setting.lowercase) { pass += fillWith(max, lowercaseChr) }
   if (setting.uppercase) { pass += fillWith(max, uppercaseChr) }
@@ -72,4 +77,12 @@ function shuffle (array) {
   }
 
   return array
+}
+
+const addMissedChr = (length, setting) => {
+  const pass = ''
+  if (setting.lowercase) { return fillWith(length, lowercaseChr) }
+  if (setting.uppercase) { return fillWith(length, uppercaseChr) }
+  if (setting.number) { return fillWith(length, numbers) }
+  if (setting.symbol) { return fillWith(length, symbols) }
 }
