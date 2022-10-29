@@ -26,6 +26,8 @@ This project use:
 - Redux
 - Standardjs
 - Tailwindcss
+- React-icon
+
 
 ## License 📝
 This project use
