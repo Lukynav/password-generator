@@ -18,8 +18,8 @@ export default function App () {
           <h3 className='row-span-2 text-white text-lg font-bold mb-1'>Characters used:</h3>
           <CharacterUsed option='uppercase' />
           <CharacterUsed option='lowercase' />
-          <CharacterUsed option='numbers' />
-          <CharacterUsed option='symbols' />
+          <CharacterUsed option='number' />
+          <CharacterUsed option='symbol' />
         </section>
       </div>
     </main>
