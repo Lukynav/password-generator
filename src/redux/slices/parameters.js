@@ -19,10 +19,10 @@ export const parameters = createSlice({
         case 'uppercase':
           return { ...state, uppercase: !state.uppercase }
 
-        case 'numbers':
+        case 'number':
           return { ...state, number: !state.number }
 
-        case 'symbols':
+        case 'symbol':
           return { ...state, symbol: !state.symbol }
       }
       return state
