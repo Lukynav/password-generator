@@ -6,7 +6,7 @@ import { Title } from './components/title/Title'
 export default function App () {
   return (
     <main className='w-screen h-screen bg-black'>
-      <div className='m-auto py-8 w-96'>
+      <div className='m-auto py-8 w-full px-2 tablet:px-0 tablet:w-96'>
         <Title
           title='Password generator'
           subtitle='Create strong and secure passowords to keep your account safe online'
