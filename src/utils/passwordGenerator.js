@@ -1,21 +1,27 @@
-const lowercaseChr = 'qwertyuiopasdfghjklzxcvbnm'
-const uppercaseChr = 'QWERTYUIOPASDFGHJKLZXCVBNM'
-const numbers = '0123456789'
-const symbols = '!@#$%&*_-'
+import { allowLetters } from "./allowLetters"
+import { getRandomInt, getLengthOfObject, sortPassword } from "./functions"
 
+// Allow letters
+const {lowercaseLetters, uppercaseLetters, symbols, numbers} = allowLetters
+
+// main function
 export const passwordGenerator = (length, setting) => {
+  
+  // -- Is the data ok?
   if (!length || length <= 0) { throw new Error('The length param is required') }
+  
+  // -- All the data is OK!
   let password = null
-
-  console.log(setting)
-
   if (!setting) { password = useDefaultSetting(length) }
   if (setting) { password = useCustomSetting(length, setting) }
 
+  // -- Is the length ok?
   if (password.length < length) {
     const dif = length - password.length
     password += addMissedChr(dif, setting)
   }
+
+  // -- If is ok, I sort the caracters
   password = sortPassword(password)
 
   return password
@@ -23,23 +29,23 @@ export const passwordGenerator = (length, setting) => {
 
 // the default setting use only lowercase characters
 const useDefaultSetting = (length) => {
-  return fillWith(length, lowercaseChr)
+  return fillWith(length, lowercaseLetters)
 }
 
-// crate an password with custom characters
+// crate an password with custom characters...
 const useCustomSetting = (length, setting) => {
   let pass = ''
   const max = Math.floor(length / getLengthOfObject(setting))
 
-  if (setting.lowercase) { pass += fillWith(max, lowercaseChr) }
-  if (setting.uppercase) { pass += fillWith(max, uppercaseChr) }
+  if (setting.lowercase) { pass += fillWith(max, lowercaseLetters) }
+  if (setting.uppercase) { pass += fillWith(max, uppercaseLetters) }
   if (setting.number) { pass += fillWith(max, numbers) }
   if (setting.symbol) { pass += fillWith(max, symbols) }
 
   return pass
 }
 
-// create an array with custom characters
+// create a string with the characters used...
 const fillWith = (length, characters) => {
   let pass = ''
   for (let i = 0; i < length; i++) {
@@ -49,40 +55,10 @@ const fillWith = (length, characters) => {
   return pass
 }
 
-// generate a number between 0 - max
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max)
-}
-
-const getLengthOfObject = (obj) => {
-  return Object.keys(obj).length
-}
-
-const sortPassword = (password) => {
-  const passArray = password.split('')
-  return shuffle(passArray).join('')
-}
-
-function shuffle (array) {
-  let currentIndex = array.length; let temporaryValue; let randomIndex
-
-  for (let i = 0; i < 25; i++) {
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex -= 1
-      temporaryValue = array[currentIndex]
-      array[currentIndex] = array[randomIndex]
-      array[randomIndex] = temporaryValue
-    }
-  }
-
-  return array
-}
-
 const addMissedChr = (length, setting) => {
   const pass = ''
-  if (setting.lowercase) { return fillWith(length, lowercaseChr) }
-  if (setting.uppercase) { return fillWith(length, uppercaseChr) }
+  if (setting.lowercase) { return fillWith(length, lowercaseLetters) }
+  if (setting.uppercase) { return fillWith(length, uppercaseLetters) }
   if (setting.number) { return fillWith(length, numbers) }
   if (setting.symbol) { return fillWith(length, symbols) }
 }
