@@ -12,8 +12,9 @@ export const PasswordLength = () => {
 
   return (
     <section className='grid gap-1 mb-8 bg-gray-800 p-4 rounded-md'>
-      <h3 className='row-span-2 text-white text-lg font-bold mb-2'>Password length: {length}</h3>
+      <label for='range' className='row-span-2 text-white text-lg font-bold mb-2'>Password length: {length}</label>
       <input
+        id='range'
         type='range'
         min='6'
         max='60'

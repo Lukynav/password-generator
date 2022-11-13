@@ -28,32 +28,3 @@ export const CharacterUsed = ({ option }) => {
     </>
   )
 }
-
-
-  /*
-  <input
-    defaultChecked={parameters[option]}
-    type='checkbox'
-    onChange={handleChecked}
-  />
-
-      {
-      (parameters[option]) && 
-      <article className={'flex align-button border-gray-700 p-2 border-2 rounded-md'} onClick={handleChecked}>
-        <Character />
-      </article>
-    }
-   {
-      (!parameters[option]) && 
-      <article className='flex align-button bg-gray-700 border-white p-2 border-2 rounded-md' onClick={handleChecked}>
-      <Character />
-      </article>
-    }
-
-   <article className='flex align-button bg-gray-700 border-white p-2 border-2 rounded-md'>
-      <div className='p-1 bg-gray-700 rounded-md mr-4'>
-        <BiAt color='white' size={22} />
-      </div>
-      <label className='text-white p-1'>Allow {option}</label>  
-    </article>
-  */
