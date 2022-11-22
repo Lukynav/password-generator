@@ -12,7 +12,7 @@ export const PasswordLength = () => {
 
   return (
     <section className='grid gap-1 mb-8 bg-gray-800 p-4 rounded-md'>
-      <label for='range' className='row-span-2 text-white text-lg font-bold mb-2'>Password length: {length}</label>
+      <label htmlFor='range' className='row-span-2 text-white text-lg font-bold mb-2'>Password length: {length}</label>
       <input
         id='range'
         type='range'

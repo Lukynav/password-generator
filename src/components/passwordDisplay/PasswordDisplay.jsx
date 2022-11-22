@@ -12,7 +12,7 @@ export const PasswordDisplay = () => {
 
   return (
     <>
-      <label for='password' className='text-gray-200 font-bold p-2'>Password generated:</label>
+      <label htmlFor='password' className='text-gray-200 font-bold p-2'>Password generated:</label>
 
       <section className='rounded-md border-2 p-1 border-gray-400 flex gap-1 mb-8'>
         <input id='password' value={password} type='text' className='bg-transparent px-1 font-bold text-white w-full' disabled />
