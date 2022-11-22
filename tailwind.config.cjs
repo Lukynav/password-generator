@@ -6,8 +6,8 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'tablet': '400px',
-    },
+      tablet: '400px'
+    }
   },
   plugins: []
 }
