@@ -5,13 +5,13 @@ import { getRandomInt, getLengthOfObject, sortPassword } from "./functions"
 const {lowercaseLetters, uppercaseLetters, symbols, numbers} = allowLetters
 
 // main function
-export const passwordGenerator = (length, setting) => {
+export const passwordGenerator = (length:number, setting:setting):string => {
   
   // -- Is the data ok?
   if (!length || length <= 0) { throw new Error('The length param is required') }
   
   // -- All the data is OK!
-  let password = null
+  let password = ''
   if (!setting) { password = useDefaultSetting(length) }
   if (setting) { password = useCustomSetting(length, setting) }
 
@@ -28,15 +28,14 @@ export const passwordGenerator = (length, setting) => {
 }
 
 // the default setting use only lowercase characters
-const useDefaultSetting = (length) => {
+const useDefaultSetting = (length:number):string => {
   return fillWith(length, lowercaseLetters)
 }
 
 // crate an password with custom characters...
-const useCustomSetting = (length, setting) => {
+const useCustomSetting = (length:number, setting:setting):string => {
   let pass = ''
   const max = Math.floor(length / getLengthOfObject(setting))
-
   if (setting.lowercase) { pass += fillWith(max, lowercaseLetters) }
   if (setting.uppercase) { pass += fillWith(max, uppercaseLetters) }
   if (setting.number) { pass += fillWith(max, numbers) }
@@ -46,7 +45,7 @@ const useCustomSetting = (length, setting) => {
 }
 
 // create a string with the characters used...
-const fillWith = (length, characters) => {
+const fillWith = (length:number, characters:string):string => {
   let pass = ''
   for (let i = 0; i < length; i++) {
     const random = getRandomInt(characters.length)
@@ -55,7 +54,7 @@ const fillWith = (length, characters) => {
   return pass
 }
 
-const addMissedChr = (length, setting) => {
+const addMissedChr = (length:number, setting:setting) => {
   const pass = ''
   if (setting.lowercase) { return fillWith(length, lowercaseLetters) }
   if (setting.uppercase) { return fillWith(length, uppercaseLetters) }
